@@ -101,5 +101,6 @@ function fillAndAppendCartTemplate(data) {
     for (element of cartIds) {
         element.setAttribute("value", data.id);
     }
+    document.getElementById("checkout").setAttribute("href", `/checkout/${data.id}`)
     setAddRemoveButtonListeners();
 }

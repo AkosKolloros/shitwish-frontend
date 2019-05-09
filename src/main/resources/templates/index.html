@@ -116,7 +116,7 @@
                             </table>
                         </div>
                         <div class="modal-footer">
-                            <a class="btn btn-dark" th:href="${'/checkout/' + cart.getId()}">Checkout</a>
+                            <a id="checkout" class="btn btn-dark" th:href="${cart.getId() != null ? '/checkout/' + cart.getId() : null}">Checkout</a>
                         </div>
                     </div>
                 </div>
