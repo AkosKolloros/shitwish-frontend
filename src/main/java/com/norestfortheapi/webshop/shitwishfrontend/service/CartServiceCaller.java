@@ -23,11 +23,11 @@ public class CartServiceCaller {
 
     public Cart getCart(Long id) {
         try {
-            ResponseEntity<Cart> wishUserResponseEntity = restTemplate.exchange(url + id,
+            ResponseEntity<Cart> cartResponseEntity = restTemplate.exchange(url + id,
                     HttpMethod.GET
                     , null, new ParameterizedTypeReference<Cart>() {
                     });
-            return wishUserResponseEntity.getBody();
+            return cartResponseEntity.getBody();
         } catch (Exception e) {
             log.error(e.getMessage());
             throw new ExecutionFailedException(e.getMessage());
@@ -37,8 +37,8 @@ public class CartServiceCaller {
     public Cart addItemToCart(Long id, CartItem cartItem) {
         try {
             String postUrl = url + id + "/products";
-            ResponseEntity<Cart> wishUserResponseEntity = restTemplate.postForEntity(postUrl, cartItem, Cart.class);
-            return wishUserResponseEntity.getBody();
+            ResponseEntity<Cart> cartResponseEntity = restTemplate.postForEntity(postUrl, cartItem, Cart.class);
+            return cartResponseEntity.getBody();
         } catch (Exception e) {
             log.error(e.getMessage());
             throw new ExecutionFailedException(e.getMessage());
@@ -47,8 +47,9 @@ public class CartServiceCaller {
 
     public Cart createNewCart(Cart cart) {
         try {
-            ResponseEntity<Cart> wishUserResponseEntity = restTemplate.postForEntity(url, cart, Cart.class);
-            return wishUserResponseEntity.getBody();
+            ResponseEntity<Cart> cartResponseEntity = restTemplate.postForEntity(url, cart, Cart.class);
+            Cart updatedCart = cartResponseEntity.getBody();
+            return cartResponseEntity.getBody();
         } catch (Exception e) {
             log.error(e.getMessage());
             throw new ExecutionFailedException(e.getMessage());
@@ -58,12 +59,12 @@ public class CartServiceCaller {
     public Cart deleteItemFromCart(Long id, Long productId) {
         String deleteUrl = url + id + "/products/" + productId;
         try {
-            ResponseEntity<Cart> wishUserResponseEntity = restTemplate.exchange(
-                    url,
+            ResponseEntity<Cart> cartResponseEntity = restTemplate.exchange(
+                    deleteUrl,
                     HttpMethod.DELETE,
                     null,
                     Cart.class);
-            return wishUserResponseEntity.getBody();
+            return cartResponseEntity.getBody();
         } catch (Exception e) {
             log.error(e.getMessage());
             throw new ExecutionFailedException(e.getMessage());

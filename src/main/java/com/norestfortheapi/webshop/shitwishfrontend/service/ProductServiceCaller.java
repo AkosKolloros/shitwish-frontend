@@ -20,17 +20,8 @@ public class ProductServiceCaller {
     @Autowired
     private RestTemplate restTemplate;
 
-    @Value("${url.base}")
-    private String baseUrl;
-
     @Value("${url.products}")
     private String productUrl;
-
-    @Value("${url.users}")
-    private String userUrl;
-
-    @Value("${url.carts}")
-    private String cartUrl;
 
     public List<Product> getProductList() {
 

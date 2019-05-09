@@ -18,9 +18,6 @@ public class UserServiceCaller {
     @Autowired
     private RestTemplate restTemplate;
 
-    @Value("${url.base}")
-    private String baseUrl;
-
     @Value("${url.users}")
     private String userUrl;
 
