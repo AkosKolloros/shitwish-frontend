@@ -35,7 +35,7 @@ public class ProductServiceCaller {
     public List<Product> getProductList() {
 
         try {
-            ResponseEntity<List<Product>> productList = restTemplate.exchange(baseUrl + productUrl, HttpMethod.GET,
+            ResponseEntity<List<Product>> productList = restTemplate.exchange(productUrl, HttpMethod.GET,
                     null, new ParameterizedTypeReference<List<Product>>() {
                     });
             return productList.getBody();
@@ -54,7 +54,7 @@ public class ProductServiceCaller {
 
     public Product getProduct(long id) {
         try {
-            ResponseEntity<Product> productResponseEntity = restTemplate.exchange(baseUrl + productUrl + "/" + id,
+            ResponseEntity<Product> productResponseEntity = restTemplate.exchange(productUrl + id,
                     HttpMethod.GET
                     , null, new ParameterizedTypeReference<Product>() {
                     });

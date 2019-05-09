@@ -69,6 +69,4 @@ public class CartServiceCaller {
             throw new ExecutionFailedException(e.getMessage());
         }
     }
-
 }
-
