@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.HashMap;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -14,13 +15,13 @@ import java.util.HashMap;
 public class Cart {
     private long id;
     private long userId;
-    // productID, quantity
-    private HashMap<Long, Integer> productIDs;
-    // product, quantity
-    private HashMap<Product, Integer> products;
+    private List<CartItem> products;
     private CartStatus status;
 
     public int getSumProducts() {
+        if (products != null) {
+            return products.size();
+        }
         return 0;
     }
 }
