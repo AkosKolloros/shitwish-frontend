@@ -17,11 +17,6 @@ import java.util.List;
 @SessionAttributes({"cart", "user"})
 public class LandingPageController {
 
-    @ModelAttribute("user")
-    public WishUser getUser() {
-        return new WishUser();
-    }
-
     @ModelAttribute("cart")
     public Cart getCart() {
         return new Cart();
