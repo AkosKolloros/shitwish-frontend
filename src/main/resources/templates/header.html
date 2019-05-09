@@ -3,7 +3,7 @@
 <body>
 <div th:fragment="header">
     <nav class="fixed-top navbar navbar-expand-sm text-light">
-        <div th:if="${username == null}">
+        <div th:if="${user == null}">
             <ul class="navbar-nav">
             <span class="navbar-text">
                 You are not logged in!
@@ -23,9 +23,9 @@
                 </li>
             </ul>
         </div>
-        <div th:if="${username != null}">
+        <div th:if="${user != null}">
             <ul class="navbar-nav">
-            <span class="navbar-text" th:text="'Signed in as '+${username}">
+            <span class="navbar-text" th:text="'Signed in as '+${user.getUserName()}">
                 Hi, User
             </span>
                 <li class="nav-item">

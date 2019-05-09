@@ -5,6 +5,7 @@ import com.norestfortheapi.webshop.shitwishfrontend.service.UserServiceCaller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -27,11 +28,14 @@ public class LoginController {
     }
 
     @PostMapping
-    public String login(@ModelAttribute WishUser user, @RequestParam String userName, @RequestParam String password) {
+    public String login(@RequestParam String userName, @RequestParam String password, Model model) {
         WishUser loginUser = WishUser.builder().userName(userName).password(password).build();
-        if (userServiceCaller.authenticateUser(loginUser)){
+        WishUser sessionUser = userServiceCaller.authenticateUser(loginUser);
+        if (sessionUser != null){
             log.info("Log in successful.");
             //TODO set as session attribute
+            model.addAttribute("user", sessionUser);
+            log.info(model.toString());
             return "redirect:/";
         }
         log.info("Log in NOT successful.");
