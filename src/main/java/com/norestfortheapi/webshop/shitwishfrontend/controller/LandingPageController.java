@@ -29,9 +29,6 @@ public class LandingPageController {
     @Autowired
     private ProductServiceCaller productServiceCaller;
 
-    @Autowired
-    private CartServiceCaller cartServiceCaller;
-
     @GetMapping("/")
     public String displayPage(Model model, @ModelAttribute WishUser user, @ModelAttribute Cart cart) {
         List<Product> products = productServiceCaller.getProductList();
