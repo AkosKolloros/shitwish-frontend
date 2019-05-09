@@ -4,8 +4,34 @@ cartModalButton.addEventListener('click', function () {
         $('#shoppingCart').modal('show');
     }
 });
+let addOnceItemForms = document.querySelectorAll("form.addOnce");
+handleAddRemoveEvent(addOnceItemForms);
 
 setAddRemoveButtonListeners();
+
+function getCartItem(form) {
+    let formObject = getFormFieldsAsObject(form);
+    return {
+        price: formObject.price,
+        productId: formObject.productId,
+        name: formObject.name,
+        cart: {
+            id: formObject.id
+        }
+    };
+}
+
+function getUrl(form) {
+    let url;
+    let formObject = getFormFieldsAsObject(form);
+    if (formObject.action === "add") {
+        url = "/cart/add-item";
+    } else {
+        url = "/cart/delete-item";
+    }
+
+    return url;
+}
 
 function handleAddRemoveEvent(formItems) {
     for (let i = 0; i < formItems.length; i++) {
@@ -13,9 +39,13 @@ function handleAddRemoveEvent(formItems) {
         form.addEventListener('submit', function (event) {
             event.preventDefault();
             event.stopPropagation();
-            fetch("/cart", {
+            let cartItem = getCartItem(form);
+            fetch(getUrl(form), {
                 method: "post",
-                body: JSON.stringify(getFormFieldsAsObject(form))
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(cartItem)
             }).then(function (response) {
                 if (response.ok) {
                     return response.json();
@@ -23,7 +53,7 @@ function handleAddRemoveEvent(formItems) {
                     response.error();
                 }
             }).then(function (data) {
-                if (data.items.length > 0) {
+                if (data.products.length > 0) {
                     console.log(data);
                     fillAndAppendCartTemplate(data);
                 } else {
@@ -57,11 +87,20 @@ function getFormFieldsAsObject(elements) {
 function fillAndAppendCartTemplate(data) {
     let cartSource = document.getElementById("cartBody").innerHTML;
     let cartTemplate = Handlebars.compile(cartSource);
-    let cartContext = {items: data.items, amount: data.amount};
+    let items = data.products;
+    for (let item of items) {
+        item["cartId"] = data.id;
+    }
+    let cartContext = {items: items, amount: data.amountToPay};
     let placeToInsertCart = document.getElementById("cart");
     let toAppendCart = cartTemplate(cartContext);
     placeToInsertCart.innerHTML = toAppendCart;
-    let itemNumber = data.itemNumber;
+    let itemNumber = data.productNumber;
     document.getElementById("itemNumber").innerText = itemNumber;
+    let cartIds = document.getElementsByClassName("cartId")
+    for (element of cartIds) {
+        element.setAttribute("value", data.id);
+    }
+    document.getElementById("checkout").setAttribute("href", `/checkout/${data.id}`)
     setAddRemoveButtonListeners();
 }

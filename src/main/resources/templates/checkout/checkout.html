@@ -27,8 +27,8 @@
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <!-- End of Bootstrap components -->
     <link href="https://fonts.googleapis.com/css?family=Coiny|Gloria+Hallelujah|Hanalei+Fill|Pacifico|Permanent+Marker|Raleway" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/static/css/custom.css"/>
-    <link rel="icon" type="image/png" href="/static/img/coffeebean.ico">
+    <link rel="stylesheet" type="text/css" href="/css/custom.css"/>
+    <link rel="icon" type="image/png" href="/img/poop_icon.jpg">
 </head>
 <body>
 <div th:replace="header.html :: header">
@@ -158,17 +158,17 @@
                     Total
                 </div>
             </div>
-            <div class="row my-2" th:each="orderitem : ${shoppingcart}">
-                <div class="col mx-0 text-truncate" th:text="${orderitem.getValue().getName()}">
+            <div class="row my-2" th:each="orderitem : ${cart.getProducts()}">
+                <div class="col mx-0 text-truncate" th:text="${orderitem.getName()}">
                     Product name
                 </div>
-                <div class="col mx-0 text-truncate" th:text="${orderitem.getValue().getQuantity()}">
+                <div class="col mx-0 text-truncate" th:text="${orderitem.getQuantity()}">
                     Quantity
                 </div>
-                <div class="col mx-0 text-truncate" th:text="${orderitem.getValue().getPrice()}">
+                <div class="col mx-0 text-truncate" th:text="${orderitem.getPrice()}">
                     Price
                 </div>
-                <div class="col mx-0 text-truncate font-weight-bold" th:text="${orderitem.getValue().getTotalPrice()}">
+                <div class="col mx-0 text-truncate font-weight-bold" th:text="${cart.getTheAmountToPay()}">
                     Total
                 </div>
             </div>
@@ -185,7 +185,7 @@
                 </div>
                 <div class="col">
                 </div>
-                <div class="col font-weight-bold" th:text="${amountToPay}">
+                <div class="col font-weight-bold" th:text="${cart.getTheAmountToPay()}">
                     0.00 $
                 </div>
             </div>

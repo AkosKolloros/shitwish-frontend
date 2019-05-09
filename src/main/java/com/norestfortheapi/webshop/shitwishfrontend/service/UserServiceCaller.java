@@ -18,9 +18,6 @@ public class UserServiceCaller {
     @Autowired
     private RestTemplate restTemplate;
 
-    @Value("${url.base}")
-    private String baseUrl;
-
     @Value("${url.users}")
     private String userUrl;
 
@@ -46,10 +43,12 @@ public class UserServiceCaller {
     }
 
     public WishUser authenticateUser(WishUser loginUser) {
-        ResponseEntity<WishUser> responseEntity = restTemplate.postForEntity(userUrl + "authentication", loginUser, WishUser.class);
-        if (responseEntity.getStatusCode().equals(HttpStatus.ACCEPTED)) {
+        try {
+            ResponseEntity<WishUser> responseEntity = restTemplate.postForEntity(userUrl + "authentication", loginUser, WishUser.class);
             return responseEntity.getBody();
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            return null;
         }
-        return null;
     }
 }
