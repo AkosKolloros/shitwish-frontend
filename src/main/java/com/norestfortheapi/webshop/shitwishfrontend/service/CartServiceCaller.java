@@ -17,15 +17,12 @@ public class CartServiceCaller {
     @Autowired
     private RestTemplate restTemplate;
 
-    @Value("${url.base}")
-    private String baseUrl;
-
     @Value("${url.carts}")
     private String cartUrl;
 
     public Cart getCart(long id) {
         try {
-            ResponseEntity<Cart> wishUserResponseEntity = restTemplate.exchange(baseUrl + cartUrl + "/" + id,
+            ResponseEntity<Cart> wishUserResponseEntity = restTemplate.exchange(cartUrl + id,
                     HttpMethod.GET
                     , null, new ParameterizedTypeReference<Cart>() {
                     });

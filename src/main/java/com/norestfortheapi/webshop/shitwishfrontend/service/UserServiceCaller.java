@@ -26,7 +26,7 @@ public class UserServiceCaller {
 
     public WishUser getUser(long id) {
         try {
-            ResponseEntity<WishUser> wishUserResponseEntity = restTemplate.exchange(baseUrl + userUrl + "/" + id,
+            ResponseEntity<WishUser> wishUserResponseEntity = restTemplate.exchange(userUrl + id,
                     HttpMethod.GET
                     , null, new ParameterizedTypeReference<WishUser>() {
                     });
