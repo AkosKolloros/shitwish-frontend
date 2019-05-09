@@ -46,7 +46,7 @@ public class UserServiceCaller {
     }
 
     public WishUser authenticateUser(WishUser loginUser) {
-        ResponseEntity<WishUser> responseEntity = restTemplate.postForEntity(baseUrl + userUrl + "/authentication", loginUser, WishUser.class);
+        ResponseEntity<WishUser> responseEntity = restTemplate.postForEntity(userUrl + "authentication", loginUser, WishUser.class);
         if (responseEntity.getStatusCode().equals(HttpStatus.ACCEPTED)) {
             return responseEntity.getBody();
         }
