@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Coffee Filter</title>
+    <!-- Bootstrap components -->
+    <!-- Latest compiled and minified Jquery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+    <!--Latest compiled and minified Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+            integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+            crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- End of Bootstrap components -->
+    <link href="https://fonts.googleapis.com/css?family=Coiny|Gloria+Hallelujah|Hanalei+Fill|Pacifico|Permanent+Marker|Raleway" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/custom.css"/>
+    <link rel="icon" type="image/png" href="/static/img/coffeebean.ico">
+</head>
+<body>
+<div th:replace="header.html :: header">
+    Header
+</div>
+<div th:replace="jumbotron.html :: jumbotron">
+    Jumbotron
+</div>
+<div class="container">
+    <form action="/registration" method="post">
+        <h4 align="center">Please fill in the below fields:</h4>
+        <br>
+
+        <div th:if="${invalidUsername != null}" th:text="${invalidUsername}">
+            Username must be between 4 and 20 characters long!
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input id="username" type="text" class="form-control" name="username" placeholder="User name">
+        </div>
+        <br>
+
+        <div th:if="${invalidPassword != null}" th:text="${invalidPassword}">
+            Password must be at least 8 characters, and must contain lower and uppercase letter(s), and number(s)!
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+            <input id="password" type="password" class="form-control" name="password" placeholder="Password">
+        </div>
+        <br>
+
+        <div th:if="${invalidEmail != null}" th:text="${invalidEmail}">
+            Please enter a valid e-mail address!
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+            <input id="email" type="email" class="form-control" name="email" placeholder="E-mail">
+        </div>
+        <br>
+        <button type="submit" class="btn btn-dark">Registration</button>
+    </form>
+</div>
+
+</div>
+</body>
+</html>

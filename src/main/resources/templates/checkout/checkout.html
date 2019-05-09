@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="author" content="Codecool"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+    <title>Codecool Shop</title>
+
+    <!-- Bootstrap components -->
+    <!-- Latest compiled and minified Jquery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+    <!--Latest compiled and minified Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+            integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+            crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- End of Bootstrap components -->
+    <link href="https://fonts.googleapis.com/css?family=Coiny|Gloria+Hallelujah|Hanalei+Fill|Pacifico|Permanent+Marker|Raleway" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/css/custom.css"/>
+    <link rel="icon" type="image/png" href="/static/img/coffeebean.ico">
+</head>
+<body>
+<div th:replace="header.html :: header">
+    Header
+</div>
+<div th:replace="jumbotron.html :: jumbotron">
+    Jumbotron
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col col-sm-12 col-lg-6">
+            <div class="row">
+                <div class="col">
+                    <div class="d-inline h4 mb-3">
+                        Billing Address
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <form action="/checkout" method="POST">
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label for="firstName">First name:</label>
+                                    <input type="text" class="form-control" id="firstName" name="firstname"
+                                           placeholder="First name" value="" pattern=".{2,20}"
+                                           required>
+                                </div>
+                                <div class="col">
+                                    <label for="lastName">Last name:</label>
+                                    <input type="text" class="form-control" id="lastName" name="lastname"
+                                           placeholder="Last name" value="" pattern=".{2,20}"
+                                           required>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label for="email">e-mail:</label>
+                                    <input type="email" class="form-control" id="email" name="email"
+                                           placeholder="you@example.com" required>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label for="street">Street:</label>
+                                    <input type="text" class="form-control" id="street" name="street"
+                                           placeholder="Enter street" required>
+                                </div>
+                                <div class="col">
+                                    <label for="house-number">House number:</label>
+                                    <input type="text" class="form-control" id="house-number" name="house-number"
+                                           placeholder="Enter house number" required>
+                                </div>
+                                <div class="col">
+                                    <label for="storey">Storey:</label>
+                                    <input type="text" class="form-control" id="storey" name="storey"
+                                           placeholder="Enter storey (if applicable)">
+                                </div>
+                                <div class="col">
+                                    <label for="door">Door:</label>
+                                    <input type="text" class="form-control" id="door" name="door"
+                                           placeholder="Enter door (if applicable)">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label for="country">Country:</label>
+                                    <select class="custom-select d-block w-100" id="country" name="country" required>
+                                        <option value="">Choose...</option>
+                                        <option>Hungary</option>
+                                        <option>United States</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Please select a valid country.
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <label for="city">City:</label>
+                                    <input type="text" class="form-control" id="city" name="city"
+                                           placeholder="Enter city name" required>
+                                </div>
+                                <div class="col">
+                                    <label for="state">State:</label>
+                                    <input type="text" class="form-control" id="state" name="state"
+                                           placeholder="Enter State">
+                                </div>
+                                <div class="col">
+                                    <label for="zip">Zip code:</label>
+                                    <input type="text" class="form-control" id="zip" name="zip"
+                                           placeholder="ZIP"
+                                           value=""
+                                           required>
+                                </div>
+                            </div>
+                            <div class="row my-3">
+                                <div class="col">
+                                    <hr class="h4">
+                                    <input class="btn btn-dark btn-lg btn-block" type="submit"
+                                           value="Continue to payment"/>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col col-sm-12 col-lg-6">
+            <div class="row">
+                <div class="col">
+                    <div class="d-inline h4 mb-3 muted">
+                        Your cart
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-between align-items-center">
+                <div class="col font-weight-bold">
+                    Product name
+                </div>
+                <div class="col font-weight-bold">
+                    Quantity
+                </div>
+                <div class="col font-weight-bold">
+                    Price per item
+                </div>
+                <div class="col font-weight-bold">
+                    Total
+                </div>
+            </div>
+            <div class="row my-2" th:each="orderitem : ${shoppingcart}">
+                <div class="col mx-0 text-truncate" th:text="${orderitem.getValue().getName()}">
+                    Product name
+                </div>
+                <div class="col mx-0 text-truncate" th:text="${orderitem.getValue().getQuantity()}">
+                    Quantity
+                </div>
+                <div class="col mx-0 text-truncate" th:text="${orderitem.getValue().getPrice()}">
+                    Price
+                </div>
+                <div class="col mx-0 text-truncate font-weight-bold" th:text="${orderitem.getValue().getTotalPrice()}">
+                    Total
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <hr class="h4">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col font-weight-bold">
+                    Total (USD)
+                </div>
+                <div class="col">
+                </div>
+                <div class="col">
+                </div>
+                <div class="col font-weight-bold" th:text="${amountToPay}">
+                    0.00 $
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="footer.html :: copy"></div>
+</div>
+
+</body>
+</html>

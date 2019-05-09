@@ -1,0 +1,157 @@
+.glyphicon {
+    margin-right:5px;
+}
+.thumbnail
+{
+    margin-bottom: 20px;
+    padding: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+}
+.thumbnail img
+{
+    margin-top: 10px;
+}
+.item.list-group-item
+{
+    float: none;
+    width: 100%;
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+.item.list-group-item:nth-of-type(odd):hover,.item.list-group-item:hover
+{
+    background: #428bca;
+}
+
+.item.list-group-item .list-group-image
+{
+    margin-right: 10px;
+}
+.item.list-group-item .thumbnail
+{
+    margin-bottom: 0px;
+}
+.item.list-group-item .caption
+{
+    padding: 9px 9px 0px 9px;
+}
+.item.list-group-item:nth-of-type(odd)
+{
+    background: #eeeeee;
+}
+
+.item.list-group-item:before, .item.list-group-item:after
+{
+    display: table;
+    content: " ";
+}
+
+.item.list-group-item img
+{
+    float: left;
+}
+.item.list-group-item:after
+{
+    clear: both;
+}
+.list-group-item-text
+{
+    margin: 0 0 11px;
+}
+
+.jumbotron {
+    background: url("/img/shitwish_background.jpeg") rgba(0, 0, 0, 0.6);
+    background-blend-mode: overlay;
+    background-size: cover;
+    opacity: 0.9;
+}
+
+
+.jumbotron-title p {
+    font-style: oblique;
+    font-weight: bold;
+    font-size: 4em;
+    color: #bd9d85;
+    font-family: 'Gloria Hallelujah', cursive;
+}
+
+.footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;}
+
+p.sub-title{
+    font-size: 35px;
+}
+
+#payment-button{
+    margin: 0 auto !important;
+    display: block !important;
+}
+
+body {
+    background: #bd9d85;
+    font-family: 'Raleway', sans-serif !important;
+}
+
+.btn-dark {
+    background-color: #4e312d;
+    border: #4e312d;
+    color: #bd9d85;
+}
+
+.btn-dark:hover, .btn-dark:active, .btn-dark:focus {
+    background-color: #bd9d85;
+    border: #4e312d;
+    color: #4e312d;
+}
+
+.btn-dark:after {
+    transition: 0ms;
+}
+
+.product-col {
+    line-height: 100%;
+    margin: 1% 0;
+}
+
+nav.navbar {
+    background: #2c1f16;
+}
+
+.nav-link {
+    color: #bd9d85;
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    color: #ffffff;
+}
+
+.plus-button.btn-sm, .negative-button.btn-sm {
+    font-weight: bold;
+    font-size: xx-large;
+    line-height: 1.2;
+    padding: 0;
+}
+
+#cart-modal-button {
+    background: transparent;
+    position: relative;
+}
+
+#itemNumber {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(65%, -25%);
+    padding: 5% 10%;
+    background: #800000;
+}
+
+img {
+    max-width: 350px;
+}
