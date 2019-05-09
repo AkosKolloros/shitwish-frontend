@@ -20,6 +20,8 @@ public class CartItem {
 
     private BigDecimal price;
 
+    private String name;
+
     @JsonIgnoreProperties({"products"})
     private Cart cart;
 }
